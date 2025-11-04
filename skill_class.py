@@ -9,10 +9,13 @@ class Skill:
     
     def __read__(self):
         return self.b_power, self.c_power, self.c_num
+    
+    def initial_coins(self):
+        return self.c_num
 
-    def calculate(self):
+    def calculate(self, coins):
         final_power = self.b_power
-        for i in range(0, self.c_num):
+        for i in range(0, coins):
             headsortails = random.randint(1,2)
             if headsortails == 1:
                 final_power += self.c_power

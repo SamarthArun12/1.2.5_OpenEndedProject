@@ -2,8 +2,8 @@ import turtle as trtl
 import random
 from skill_class import Skill
 
-player_skill1 = Skill(4, 4, 3)
-enemy_skill1 = Skill(3, 3, 4)
+player_skill1 = Skill(4, 4, 3, "Player Skill 1")
+enemy_skill1 = Skill(3, 3, 4, "Enemy Skill 1")
 
 def clashing(p_skill, e_skill):
     p_coins = p_skill.initial_coins()
@@ -20,13 +20,15 @@ def clashing(p_skill, e_skill):
         if e_coins == 0:
             loser = "enemy" #placeholder, change later to enemy object
             damage_num = p_skill.calculate(p_coins)
+            skill_name = p_skill.get_name()
             clash = False
         elif p_coins == 0:
             loser = "player" #placeholder, change later to player object
             damage_num = e_skill.calculate(e_coins)
+            skill_name = e_skill.get_name()
             clash = False
-    return loser, damage_num
+    return loser, damage_num, skill_name
 
-lost, damage_to_take = clashing(player_skill1, enemy_skill1)
+lost, damage_to_take, skills_name = clashing(player_skill1, enemy_skill1)
 
-print(lost + " takes " + str(damage_to_take) + " damage!")
+print(lost + " takes " + str(damage_to_take) + " damage to " + skills_name + "!")

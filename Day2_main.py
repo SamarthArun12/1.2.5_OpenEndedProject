@@ -68,14 +68,15 @@ def print_clash_results(results):
     print(print(loser + " takes " + str(damage_to_take) + " damage to " + skills_name + "!"))
 
 def player_select_skill():
-    list_of_skills = player.get_skills
+    list_of_skills = player.get_skills()
     print("Here are your skills: \n")
     for skill in list_of_skills:
-        skill.__read__()
+        print(skill.__read__())
         print(" ")
     request = int(input("Please enter the skill you would like to use as an integer (1, 2, or 3): "))
-    selected = player.get_skill(request)
+    selected = player.get_skill(request - 1)
 
 selected_skill = player_select_skill
+
 
 print_clash_results(clashing(selected_skill, enemy_skill1))
